@@ -1,11 +1,12 @@
 import React, {useContext} from 'react';
-import {View, Text, StyleSheet, TextInput, Button} from 'react-native';
-import BlogContext from '../context/BlogContext';
+import {View, Text, StyleSheet} from 'react-native';
+import {Context} from '../context/BlogContext'
 
-const CreateScreen = () => {
+const CreateScreen = ({navigation}) => {
+
     return (
         <View>
-            <Text>Create Screen</Text>
+            <Text>Create</Text>
         </View>
     )
 }

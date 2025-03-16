@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { View, Text, StyleSheet, FlatList, Button, TouchableOpacity } from 'react-native';
 import { Context } from '../context/BlogContext';
 import Feather from '@expo/vector-icons/Feather';
+import AntDesign from '@expo/vector-icons/AntDesign';
 
 const IndexScreen = ({ navigation }) => {
     const {state, addBlogPost, deleteBlogPost, editBlogPost} = useContext(Context);
@@ -31,6 +32,16 @@ const IndexScreen = ({ navigation }) => {
     );
 };
 
+IndexScreen.navigationOptions =({ navigation }) =>{
+    return{
+        headerRight:  () => (
+            <TouchableOpacity onPress={() => navigation.navigate('Create')}>
+              <AntDesign name="plus" size={30} />
+            </TouchableOpacity>
+          )
+    }      
+}   
+
 const styles = StyleSheet.create({
     row: {
         flexDirection: 'row',
@@ -47,6 +58,9 @@ const styles = StyleSheet.create({
     },
     icon: {
         fontSize: 24
+    },
+    header: {
+        paddingHorizontal: 40,
     }
 })
 
