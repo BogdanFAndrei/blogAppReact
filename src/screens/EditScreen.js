@@ -1,6 +1,7 @@
 import React, {useState, useContext} from 'react';
-import {View, Text, StyleSheet, TextInput, Button} from 'react-native';
+import { StyleSheet} from 'react-native';
 import {Context} from '../context/BlogContext';
+import BlogPostForm from '../components/BlogPostForm';
 
 
 const EditScreen = ({navigation}) => {
@@ -9,23 +10,12 @@ const EditScreen = ({navigation}) => {
     const blogPost = state.find((blogPost)=> blogPost.id === navigation.getParam('id')
     );
 
-    const [title,setTitle] = useState(blogPost.title);
-    const [content, setContent] = useState (blogPost.content);
 
 
     return (
-        <View>
-            <Text>Edit title:</Text>
-            <TextInput value = {title} onChangeText = {newTitle => setTitle(newTitle)} />
-
-            <Text>Edit content:</Text>
-            <TextInput value = {content} onChangeText = {newContent => setContent(newContent)} />
-
-            <Button title = "Save Edits:"  >
-            </Button>
-
-
-        </View>
+        <BlogPostForm
+        
+        />
     );
 };
 
