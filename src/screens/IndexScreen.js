@@ -1,25 +1,53 @@
 import React, { useContext } from 'react';
-import { View, Text, StyleSheet, FlatList } from 'react-native';
-import BlogContext from '../context/BlogContext';
+import { View, Text, StyleSheet, FlatList, Button, TouchableOpacity } from 'react-native';
+import { Context } from '../context/BlogContext';
+import Feather from '@expo/vector-icons/Feather';
 
-const IndexScreen = () => {
-    const blogPosts = useContext(BlogContext);
+const IndexScreen = ({ navigation }) => {
+    const {state, addBlogPost, deleteBlogPost, editBlogPost} = useContext(Context);
     return (
         <View>
-            <Text>Index Screen</Text>
+            <Button title = "Add Blog Post" 
+                onPress= { addBlogPost}
+            />
+           
             <FlatList
-                data={blogPosts}
-                keyExtractor={(blogPost) => blogPost.title}
+                data={state}
+                keyExtractor={(blogPost) => blogPost.id.toString()}
                 renderItem={({ item }) => {
-                    return <Text>{item.title}</Text>;
-                }}
+                return (
+                    <TouchableOpacity onPress={() => navigation.navigate('Show', { id: item.id })}>
+                        <View style= {styles.row}>
+                            <Text style={styles.title}>{item.title}</Text>
+                            <TouchableOpacity onPress={() => deleteBlogPost(item.id)}>
+                                <Feather style={styles.icon} name="trash-2" />
+                            </TouchableOpacity>
+                        </View>
+                    </TouchableOpacity>
+                );
+            }}
             />
         </View>
     );
 };
 
 const styles = StyleSheet.create({
+    row: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingVertical: 20,
+        borderTopWidth: 1,
+        paddingHorizontal: 20,
+        borderColor: 'gray'
 
+    },
+    title: {
+        fontSize: 18
+
+    },
+    icon: {
+        fontSize: 24
+    }
 })
 
 export default IndexScreen;
