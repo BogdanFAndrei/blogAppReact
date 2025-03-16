@@ -5,12 +5,9 @@ import Feather from '@expo/vector-icons/Feather';
 import AntDesign from '@expo/vector-icons/AntDesign';
 
 const IndexScreen = ({ navigation }) => {
-    const {state, addBlogPost, deleteBlogPost, editBlogPost} = useContext(Context);
+    const {state, deleteBlogPost} = useContext(Context);
     return (
         <View>
-            <Button title = "Add Blog Post" 
-                onPress= { addBlogPost}
-            />
            
             <FlatList
                 data={state}
