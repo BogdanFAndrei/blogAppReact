@@ -1,6 +1,29 @@
+/**
+ * BlogPostForm Component
+ * 
+ * A reusable form component for creating and editing blog posts.
+ * Handles input state management and form submission for both new posts
+ * and editing existing ones.
+ * 
+ * Features:
+ * - Title and content input fields
+ * - Form submission handling
+ * - Pre-filled values support for editing
+ * - Consistent styling
+ */
+
 import React, { useState } from "react";
 import { View, Text, StyleSheet, TextInput, Button } from "react-native";
  
+/**
+ * BlogPostForm Component
+ * 
+ * @param {Object} props - Component props
+ * @param {Function} props.onSubmit - Callback function called with title and content on form submission
+ * @param {Object} props.initialValues - Initial values for the form fields
+ * @param {string} props.initialValues.title - Initial title value
+ * @param {string} props.initialValues.content - Initial content value
+ */
 const BlogPostForm = ({
   onSubmit,
   initialValues = { title: "", content: "" },
