@@ -29,7 +29,7 @@ const ShowScreen = ({navigation}) => {
     )
 }
 
-// Configure the header with an edit button
+
 ShowScreen.navigationOptions =({ navigation }) =>{
     return {
         headerRight: () => (
