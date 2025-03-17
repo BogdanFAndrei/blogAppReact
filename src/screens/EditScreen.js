@@ -9,6 +9,7 @@ const EditScreen = ({navigation}) => {
     const {state, editBlogPost} = useContext(Context);
 
     const blogPost = state.find((blogPost)=> blogPost.id === id
+    
     );
 
 
